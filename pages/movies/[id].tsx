@@ -13,7 +13,6 @@ const MovieDetail = (props:IProps) => {
 
 const router = useRouter();
   const { data, isError, isLoading, mutate} = useMovieDetail(props.id);
-  console.log(data);
 
   if (isError) return <div>failed to load</div>
   if (!data) return <> <h2>Movie Detail</h2><div>loading...</div></>

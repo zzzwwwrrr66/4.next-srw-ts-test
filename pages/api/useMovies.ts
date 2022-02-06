@@ -30,13 +30,15 @@ export interface Idata  {
       title_long: string
       url: string
       year: number
-    }[]
+    }[],
+    page_number:number
 }
 
-export default function useMovies(){
+export default function useMovies(pageNum?: number){
   const fetcher = (url: string): Promise<Idata> =>
   axios(url).then((res) => res.data).then(data=>data.data);
-  const { data, error, mutate } = useSWR('https://yts.mx/api/v2/list_movies.json', fetcher);
+  const num = pageNum ? pageNum : 1
+  const { data, error, mutate } = useSWR(`https://yts.mx/api/v2/list_movies.json?page=${num}`, fetcher);
 
   return {
     data,

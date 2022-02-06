@@ -16,7 +16,7 @@ const todo = () => {
     
     for(let i = 0; i < todoList.length; i++) {
       if(todoList[i] === testInput) {
-        alert('todo\'s 중복');
+        alert('todo\'s 重複');
         setTestInput('');
         if(testInputRef.current) {
           testInputRef.current.focus();

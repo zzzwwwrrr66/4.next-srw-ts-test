@@ -1,0 +1,16 @@
+.paginationWrap ul {
+  display: flex;
+}
+.paginationWrap li {
+  list-style: none;
+  box-sizing: border-box;
+}
+.paginationWrap li a {
+  border: 1px solid #000;
+  padding: 0 10px 0;
+}
+
+.active {
+  background-color: cadetblue;
+  border: 3px solid cadetblue;
+}

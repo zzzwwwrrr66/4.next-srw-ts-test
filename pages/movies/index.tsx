@@ -1,23 +1,25 @@
 
 import Link from 'next/link';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import useMovies from '../api/useMovies';
+import MoviesPagination from './MoviesPagination'
 
 const Movies = () => {
-  const { data, isError, isLoading, mutate} = useMovies();
-  console.log('movies',data, 'loading', isLoading);
+  const [activePage, setActivePage] = useState(1);
+  const { data, isError, isLoading, mutate} = useMovies(activePage);
 
-  const onReloadData = () => {
-    return mutate();
+  const handlePageChange = (pageNumber:number) => {
+    setActivePage(pageNumber);
   }
-  
+
   if (isError) return <div>failed to load</div>
-  if (!data) return <div>loading...</div>
   return(
     <>
     <h1>Movies</h1>
-
-    <button onClick={onReloadData}>data reload btn</button>
+{
+  !data ? (
+    <div>loading...</div>
+  ) : (
     <ul>
     {
       data?.movies.map(v=>{
@@ -34,6 +36,10 @@ const Movies = () => {
       })
     }
     </ul>
+  )
+}
+    
+    <MoviesPagination activePage={activePage} handlePageChange={handlePageChange}/>
     </>
   )
 }
