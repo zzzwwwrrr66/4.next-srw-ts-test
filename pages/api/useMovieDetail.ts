@@ -29,10 +29,9 @@ export interface IMovieDetail  {
 }
 
 export default function useMovieDetail(id:string){
-  console.log(id);
   const fetcher = (url: string): Promise<IMovieDetail> => axios(url).then((res) => res.data).then(data=>data.data).then(data=> data.movie);
   let URL = `https://yts.mx/api/v2/movie_details.json?movie_id=${id!}`;
-  const { data, error, mutate } = useSWR(URL, fetcher);
+  const { data, error, mutate } = useSWR(URL, fetcher, {refreshInterval: 1000});
 
   return {
     data,

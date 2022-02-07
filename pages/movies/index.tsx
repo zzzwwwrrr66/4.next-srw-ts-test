@@ -16,28 +16,28 @@ const Movies = () => {
   return(
     <>
     <h1>Movies</h1>
-{
-  !data ? (
-    <div>loading...</div>
-  ) : (
-    <ul>
     {
-      data?.movies.map(v=>{
-        return (
-          <li key={v.id}>
-              <Link href={`/movies/${v.id}`}>
-              <a>{v.title}</a>
-              </Link>
-            <div>
-              <img src={v.small_cover_image} alt={v.title}/>
-            </div>
-          </li>     
-        )
-      })
+      !data ? (
+        <div>loading...</div>
+      ) : (
+        <ul>
+        {
+          data?.movies.map(v=>{
+            return (
+              <li key={v.id}>
+                  <Link href={`/movies/${v.id}`}>
+                  <a>{v.title}</a>
+                  </Link>
+                <div>
+                  <img src={v.small_cover_image} alt={v.title}/>
+                </div>
+              </li>     
+            )
+          })
+        }
+        </ul>
+      )
     }
-    </ul>
-  )
-}
     
     <MoviesPagination activePage={activePage} handlePageChange={handlePageChange}/>
     </>
