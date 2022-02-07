@@ -3,6 +3,7 @@ import { useEffect, FC } from "react";
 import {GetServerSideProps} from 'next';
 import { ParsedUrlQuery } from 'node:querystring';
 import useMovieDetail from '../api/useMovieDetail';
+import Image from 'next/image';
 
 
 export interface IProps{
@@ -24,7 +25,8 @@ const router = useRouter();
       <>
         <h3>{data.title}</h3>
         <div>
-          <img src={data.medium_cover_image}/>
+        <Image src={data.medium_cover_image} alt={data.title} width={123} height={123} />
+          {/* <img src={data.medium_cover_image}/> */}
         </div>
         <p>{data.description_full}</p>
       </>

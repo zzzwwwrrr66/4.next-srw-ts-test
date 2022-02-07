@@ -1,8 +1,7 @@
-import React, {useState} from 'react';
-import { useRef } from 'react';
+import React, {useState, useRef} from 'react';
 import styles from './style.module.css';
 
-const todo = () => {
+const Todo = () => {
   const [todoList, setTodoList] = useState<string[]>([]);
   const [testInput, setTestInput] = useState('');
   const testInputRef = useRef<HTMLInputElement>(null);
@@ -65,4 +64,4 @@ const todo = () => {
   )
 }
 
-export default todo;
+export default Todo;

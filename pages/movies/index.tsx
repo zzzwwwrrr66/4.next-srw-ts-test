@@ -2,7 +2,8 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import useMovies from '../api/useMovies';
-import MoviesPagination from './MoviesPagination'
+import MoviesPagination from './MoviesPagination';
+import Image from 'next/image';
 
 const Movies = () => {
   const [activePage, setActivePage] = useState(1);
@@ -29,7 +30,7 @@ const Movies = () => {
                   <a>{v.title}</a>
                   </Link>
                 <div>
-                  <img src={v.small_cover_image} alt={v.title}/>
+                  <Image src={(v.small_cover_image)} alt={v.title} width={123} height={123} />
                 </div>
               </li>     
             )
